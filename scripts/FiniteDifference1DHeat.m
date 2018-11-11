@@ -1,5 +1,5 @@
 %FiniteDifference1DHeat in MATH647ComputerProject
-%Version 0.0.0 Last Edited November 11th, 2018
+%Version 0.1.0 Last Edited November 11th, 2018
 %
 %Takes in a 1D heat equation for an insulated bar with an initial 
 %temperature distribution and nonhomogeneous boundary data and uses the
