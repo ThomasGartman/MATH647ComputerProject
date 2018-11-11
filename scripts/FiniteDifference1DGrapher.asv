@@ -1,1 +1,19 @@
+%FiniteDifference1DGrapher in MATH647ComputerProject
+%Version 0.1.0 Last Edited November 11th, 2018
 %
+%Takes in a solution matrix generated from applying the Finite Difference 
+%Method and saves a surface plot + certain (u,x) plots
+%
+%Arguments:
+%
+%Preconditions:
+%
+%Postconditions:
+function[] = FiniteDifference1DGrapher(dataMatrix, xscale, tscale, tStep, title, xtitle, ttitle)
+    surf(xscale, tscale, dataMatrix);
+    axis tight;
+    colormap(jet);
+    title(title);
+    xlable(xtitle);
+    ylable(ytitle);
+end
