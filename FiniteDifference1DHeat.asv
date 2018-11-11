@@ -1,0 +1,37 @@
+%FiniteDifference1DHeat in MATH647ComputerProject
+%Version 0.0.0 Last Edited November 11th, 2018
+%
+%Takes in a 1D heat equation for an insulated bar with an initial 
+%temperature distribution and nonhomogeneous boundary data and uses the
+%Finite Difference Method to numerically solve for its temperature
+%distribution.
+%
+%Arguments:
+%
+%Preconditions:
+%
+%Postconditions:
+
+function [temperatureMatrix] = FiniteDifference1DHeat(initFunc, boundX0, boundXL, const, tStep, tMin, tMax, xStep, xMin, xMax)
+%initialize temperatureMatrix
+temperatureMatrix = zeros((tMax-tMin)/tStep,(xMax - xMin)/xStep);
+
+    s = (const^2 * tStep)/xStep;
+    %Set up initial conditions
+    for k = 1:(xMax-xMin)/xStep
+        temperatureMatrix(1, k) = initFunc(k);
+    end
+    
+    %Set up boundary conditions
+    for m = 1:(tMax-tMin)/tStep
+        temperatureMatrix(m, xMin) = boundX0(m);
+        temperatureMatrix(m, xMax) = boundXL(m);
+    end
+    
+    %Set up remaining matrix values
+    for i = 2:((tMax-tMin)/tStep-1)
+        for j = 1:(xMax-xMin)/xStep
+            temperatureMatrix(i,j) = (1 - 2*s)*temperatureMatrix(i,j-1) + s*(temperatureMatrix(i+1,j-1) + temperatureMatrix(i-1, j-1));
+        end
+    end
+end
