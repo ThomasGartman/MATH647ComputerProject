@@ -1,5 +1,5 @@
 %FiniteDifference1DHeat in MATH647ComputerProject
-%Version 0.1.0 Last Edited November 11th, 2018
+%Version 0.1.0 Last Edited December 6th. 2018
 %
 %Takes in a 1D heat equation for an insulated bar with an initial 
 %temperature distribution and nonhomogeneous boundary data and uses the
@@ -14,7 +14,9 @@
 
 function [temperatureMatrix] = FiniteDifference1DHeat(initFunc, boundX0, boundXL, const, tStep, tMin, tMax, xStep, xMin, xMax)
 %initialize temperatureMatrix
-temperatureMatrix = zeros((tMax-tMin)/tStep,(xMax - xMin)/xStep + 1);
+numZerosT = fix((tMax-tMin)/tStep);
+numZerosX = fix((xMax - xMin)/xStep + 1);
+temperatureMatrix = zeros(numZerosT,numZerosX);
 
     s = (const^2 * tStep)/xStep^2;
     %Set up initial conditions
